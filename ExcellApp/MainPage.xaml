@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            x:Class="ExcellApp.MainPage"
+             Title="Електронна таблиця (Вар. 73)">
+
+    <Grid RowDefinitions="Auto, Auto, Auto, *" Padding="10">
+        <!-- Панель інструментів -->
+        <HorizontalStackLayout Grid.Row="0" Spacing="5" Margin="0,0,0,10">
+            <Button x:Name="ModeButton" Text="Режим: ЗНАЧЕННЯ" Clicked="ModeButton_Clicked" />
+            <Button Text="Порахувати" Clicked="CalculateButton_Clicked" />
+            <Button Text="Зберегти" Clicked="SaveButton_Clicked" />
+            <Button Text="Прочитати" Clicked="ReadButton_Clicked" />
+            <Button Text="Довідка" Clicked="HelpButton_Clicked" />
+            <Button Text="Вихід" Clicked="ExitButton_Clicked" />
+        </HorizontalStackLayout>
+
+        <!-- Керування розміром -->
+        <HorizontalStackLayout Grid.Row="1" Spacing="5" Margin="0,0,0,10">
+            <Button Text="+ Рядок" Clicked="AddRowButton_Clicked" />
+            <Button Text="- Рядок" Clicked="DeleteRowButton_Clicked" />
+            <Button Text="+ Стовпчик" Clicked="AddColumnButton_Clicked" />
+            <Button Text="- Стовпчик" Clicked="DeleteColumnButton_Clicked" />
+        </HorizontalStackLayout>
+
+        <!-- Рядок формул та статус -->
+        <Grid Grid.Row="2" ColumnDefinitions="60, *" RowDefinitions="Auto, Auto" Margin="0,0,0,10">
+            <Label x:Name="selectedCellLabel" Grid.Row="0" Grid.Column="0" FontAttributes="Bold" VerticalOptions="Center"/>
+            <Entry x:Name="textInput" Grid.Row="0" Grid.Column="1" Completed="FormulaBar_Completed" Placeholder="Введіть вираз..." />
+            <Label x:Name="statusLabel" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" FontSize="12" Margin="0,5,0,0" />
+        </Grid>
+
+        <!-- Сама таблиця -->
+        <ScrollView Grid.Row="3" Orientation="Both">
+            <Grid x:Name="grid" />
+        </ScrollView>
+    </Grid>
+</ContentPage>
